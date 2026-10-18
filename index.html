@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NamaKeren — Generator Username Gratis</title>
+<meta name="description" content="Generator username gratis untuk gaming, TikTok, Instagram, Discord, Roblox, dan media sosial.">
+<meta name="theme-color" content="#111827">
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#0b1020;color:#f8fafc}
+.container{width:min(900px,92%);margin:auto}
+header{text-align:center;padding:48px 0 25px}
+.badge{display:inline-block;padding:7px 12px;border:1px solid #334155;border-radius:999px;color:#cbd5e1;font-size:13px}
+h1{font-size:clamp(34px,8vw,60px);margin:16px 0 8px}
+.gradient{background:linear-gradient(90deg,#60a5fa,#a78bfa,#f472b6);-webkit-background-clip:text;color:transparent}
+.subtitle{color:#94a3b8;font-size:17px}
+.card{background:#111827;border:1px solid #243047;border-radius:22px;padding:22px;margin:20px 0;box-shadow:0 15px 40px rgba(0,0,0,.25)}
+label{display:block;font-size:14px;color:#cbd5e1;margin-bottom:8px}
+input,select{width:100%;padding:14px 15px;border-radius:12px;border:1px solid #334155;background:#0f172a;color:white;font-size:16px;outline:none}
+input:focus,select:focus{border-color:#60a5fa}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+button{border:0;border-radius:12px;padding:14px 18px;font-weight:700;font-size:15px;cursor:pointer}
+.primary{background:#6366f1;color:white;width:100%;margin-top:16px}
+.primary:hover{background:#4f46e5}
+.results{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:18px}
+.username{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:13px 14px;background:#0f172a;border:1px solid #26344c;border-radius:12px}
+.username span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.copy{padding:8px 10px;background:#1e293b;color:#e2e8f0;font-size:12px;flex-shrink:0}
+.copy:hover{background:#334155}
+.info{color:#94a3b8;font-size:13px;text-align:center;margin-top:14px}
+footer{text-align:center;color:#64748b;font-size:13px;padding:25px 0 45px}
+@media(max-width:600px){
+ .grid,.results{grid-template-columns:1fr}
+ header{padding-top:32px}
+ .card{padding:17px}
+}
+</style>
+</head>
+<body>
+<div class="container">
+<header>
+  <span class="badge">100% GRATIS • TANPA LOGIN</span>
+  <h1><span class="gradient">NamaKeren</span></h1>
+  <p class="subtitle">Buat username keren untuk gaming & media sosial dalam hitungan detik.</p>
+</header>
+
+<main class="card">
+  <div class="grid">
+    <div>
+      <label for="word">Nama / kata dasar</label>
+      <input id="word" maxlength="20" placeholder="Contoh: Doni" autocomplete="off">
+    </div>
+    <div>
+      <label for="style">Pilih gaya</label>
+      <select id="style">
+        <option value="gaming">🎮 Gaming</option>
+        <option value="cool">⚡ Cool</option>
+        <option value="aesthetic">✨ Aesthetic</option>
+        <option value="dark">🌑 Dark</option>
+        <option value="anime">🎌 Anime</option>
+        <option value="funny">😂 Funny</option>
+      </select>
+    </div>
+  </div>
+  <button class="primary" onclick="generate()">⚡ GENERATE USERNAME</button>
+</main>
+
+<section class="card">
+  <h2>Username kamu</h2>
+  <div id="results" class="results"></div>
+  <p class="info">Klik <b>Copy</b> untuk menyalin username.</p>
+</section>
+
+<footer>© 2026 NamaKeren • Generator username gratis</footer>
+</div>
+
+<script>
+const data={
+ gaming:["X","Pro","GG","OP","Playz","Rush","Vortex","Nova","Clutch","YT","FPS","Xeno"],
+ cool:["X","Z","V","Prime","Elite","Zero","Wave","Flex","Neo","Ace","Core","One"],
+ aesthetic:["luv","moon","cloud","vibe","dream","muse","soft","glow","star","bloom","angel","mist"],
+ dark:["Void","Nox","Shadow","Night","Dread","Grim","Ghost","Hex","Venom","Dark","Raven","Abyss"],
+ anime:["Kage","Yuki","Akira","Hikari","Ryu","Kuro","Sora","Kira","Kenji","Miko","Shiro","Ren"],
+ funny:["Wkwk","Bocil","Ngakak","Santuy","Mager","Sultan","Kentang","Cilok","Beban","AutoWin","Noob","Receh"]
+};
+
+function clean(s){
+ return s.replace(/[^a-zA-Z0-9]/g,"").slice(0,18) || "Player";
+}
+function pick(arr){return arr[Math.floor(Math.random()*arr.length)]}
+function randomNum(){return Math.floor(10+Math.random()*990)}
+function generate(){
+ const base=clean(document.getElementById("word").value.trim());
+ const style=document.getElementById("style").value;
+ const suffix=data[style];
+ const templates=[
+   base+pick(suffix),
+   pick(suffix)+base,
+   base+"_"+pick(suffix),
+   base+randomNum(),
+   pick(suffix)+base+randomNum(),
+   base+"X"+randomNum(),
+   "Its"+base,
+   "The"+base,
+   base+"_"+pick(suffix)+randomNum(),
+   base+pick(suffix)+randomNum(),
+   "Real"+base,
+   base+"V2",
+   base+"Exe",
+   base+"Official",
+   base+"Zone",
+   base+"Prime",
+   base+"Nova",
+   base+"Ultra",
+   base+"Max",
+   base+"Plus"
+ ];
+ const unique=[...new Set(templates)].slice(0,20);
+ document.getElementById("results").innerHTML=unique.map(name=>`
+   <div class="username">
+     <span>${name}</span>
+     <button class="copy" onclick="copyText('${name.replace(/'/g,"\\'")}',this)">COPY</button>
+   </div>`).join("");
+}
+async function copyText(text,btn){
+ try{
+   await navigator.clipboard.writeText(text);
+   const old=btn.textContent;
+   btn.textContent="COPIED!";
+   setTimeout(()=>btn.textContent=old,1000);
+ }catch(e){ alert("Username: "+text); }
+}
+document.getElementById("word").addEventListener("keydown",e=>{
+ if(e.key==="Enter") generate();
+});
+generate();
+</script>
+</body>
+</html>
