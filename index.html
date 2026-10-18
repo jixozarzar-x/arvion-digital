@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>NamaKeren — Generator Nama & Bio Gratis</title>
+<meta name="description" content="Generator username gaming, nama Roblox, nama aesthetic, dan bio media sosial gratis tanpa login.">
+<meta name="keywords" content="generator nama gaming,nama Roblox keren,username generator,bio TikTok,bio Instagram,nama aesthetic">
+<meta name="theme-color" content="#070b16">
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:system-ui,Arial,sans-serif;background:radial-gradient(circle at top,#18213d,#070b16 52%);color:#f8fafc}
+.c{width:min(920px,92%);margin:auto}header{text-align:center;padding:38px 0 22px}
+.badge{display:inline-block;padding:7px 12px;border:1px solid #334155;border-radius:99px;font-size:12px;color:#cbd5e1}
+h1{font-size:clamp(38px,9vw,62px);margin:16px 0 8px}.g{background:linear-gradient(90deg,#60a5fa,#a78bfa,#f472b6);-webkit-background-clip:text;color:transparent}
+.sub{color:#94a3b8;line-height:1.5}.card{background:#101827ed;border:1px solid #263650;border-radius:20px;padding:20px;margin:18px 0;box-shadow:0 15px 45px #0004}
+.tabs{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:16px}.tab{background:#182235;color:#cbd5e1}.tab.active{background:#6366f1;color:white}
+label{display:block;font-size:13px;color:#cbd5e1;margin:10px 0 7px}input,select{width:100%;padding:14px;border-radius:11px;border:1px solid #334155;background:#0b1322;color:white;font-size:16px}
+.main{width:100%;margin-top:15px;padding:13px;border:0;border-radius:11px;background:linear-gradient(135deg,#6366f1,#8b5cf6);color:#fff;font-weight:800}
+.actions{display:flex;gap:9px;margin-top:9px}.secondary{flex:1;background:#1e293b;color:#e2e8f0;border:0;border-radius:11px;padding:11px;font-weight:700}
+.results{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:14px}.item{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:11px;background:#0b1322;border:1px solid #263650;border-radius:11px}
+.item span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.copy{padding:7px 9px;background:#1e293b;color:#e2e8f0;border:0;border-radius:9px;font-size:11px}.done{background:#166534!important}
+.count,.info{color:#94a3b8;font-size:13px}.share{text-align:center;margin-top:12px}.share button{background:#182235;color:#cbd5e1;border:0;border-radius:10px;padding:10px}
+.notice{background:#0b1322;border:1px solid #263650;padding:14px;border-radius:12px;color:#cbd5e1;font-size:13px;line-height:1.5}
+.features{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}.f{background:#0b1322;border:1px solid #263650;border-radius:12px;padding:13px;font-size:13px}.f span{color:#94a3b8}
+footer{text-align:center;color:#64748b;font-size:12px;padding:8px 0 40px}
+@media(max-width:650px){.results,.features{grid-template-columns:1fr}.tabs{grid-template-columns:1fr 1fr 1fr}.card{padding:16px}}
+</style>
+</head>
+<body><div class="c">
+<header><span class="badge">100% GRATIS • TANPA LOGIN</span><h1><span class="g">NamaKeren</span></h1>
+<p class="sub">Satu tempat untuk membuat username, nama Roblox, dan bio media sosial.</p></header>
+
+<section class="card">
+<div class="tabs">
+<button class="tab active" onclick="setMode('username',this)">👤 Username</button>
+<button class="tab" onclick="setMode('roblox',this)">🎮 Roblox</button>
+<button class="tab" onclick="setMode('bio',this)">✨ Bio</button>
+</div>
+
+<div id="usernamePanel">
+<label>Nama / kata dasar</label><input id="word" maxlength="20" placeholder="Contoh: Doni">
+<label>Gaya username</label><select id="style">
+<option value="gaming">🎮 Gaming</option><option value="cool">⚡ Cool</option><option value="aesthetic">✨ Aesthetic</option><option value="dark">🌑 Dark</option><option value="anime">🎌 Anime</option><option value="funny">😂 Funny</option>
+</select>
+</div>
+
+<div id="robloxPanel" style="display:none">
+<label>Nama / kata dasar</label><input id="robloxWord" maxlength="20" placeholder="Contoh: Raka">
+<label>Gaya Roblox</label><select id="robloxStyle">
+<option value="pro">🔥 Pro Player</option><option value="dark">🌑 Dark</option><option value="cute">🌸 Cute</option><option value="funny">😂 Funny</option>
+</select>
+</div>
+
+<div id="bioPanel" style="display:none">
+<label>Nama</label><input id="bioName" maxlength="20" placeholder="Contoh: Raka">
+<label>Tipe bio</label><select id="bioStyle"><option value="cool">⚡ Cool</option><option value="gaming">🎮 Gaming</option><option value="aesthetic">✨ Aesthetic</option><option value="funny">😂 Funny</option></select>
+</div>
+
+<button class="main" onclick="generate()">⚡ GENERATE</button>
+<div class="actions"><button class="secondary" onclick="randomBase()">🎲 Acak</button><button class="secondary" onclick="resetAll()">✕ Reset</button></div>
+</section>
+
+<section class="card"><h2 id="resultTitle">Username kamu</h2><div id="count" class="count"></div><div id="results" class="results"></div>
+<div class="share"><button onclick="shareSite()">↗ Bagikan NamaKeren</button></div><p class="info">Klik <b>Copy</b> untuk menyalin hasil.</p></section>
+
+<section class="card"><div class="notice"><b>💡 Tips:</b> Gunakan username yang mudah diingat dan jangan memasukkan data pribadi sensitif seperti nomor telepon atau alamat.</div></section>
+
+<section class="card"><h2>Tools NamaKeren</h2><div class="features">
+<div class="f">👤 <b>Username</b><br><span>Nama untuk media sosial dan game.</span></div>
+<div class="f">🎮 <b>Roblox</b><br><span>Ide nama untuk akun Roblox.</span></div>
+<div class="f">✨ <b>Bio</b><br><span>Bio singkat untuk profil.</span></div>
+</div></section>
+<footer>© 2026 NamaKeren • Generator gratis</footer>
+</div>
+
+<script>
+let mode="username";
+const data={
+gaming:["X","Pro","GG","OP","Playz","Rush","Vortex","Nova","Clutch","YT","FPS","Xeno","Blaze","Rage","Strike","Zone","Quest","Prime"],
+cool:["X","Z","V","Prime","Elite","Zero","Wave","Flex","Neo","Ace","Core","One","Max","Ultra","Next","Peak","Edge","Mode"],
+aesthetic:["luv","moon","cloud","vibe","dream","muse","soft","glow","star","bloom","angel","mist","rose","luna","daisy","velvet","pixie","honey"],
+dark:["Void","Nox","Shadow","Night","Dread","Grim","Ghost","Hex","Venom","Dark","Raven","Abyss","Doom","Frost","Sin","Wraith","Phantom","Obsidian"],
+anime:["Kage","Yuki","Akira","Hikari","Ryu","Kuro","Sora","Kira","Kenji","Miko","Shiro","Ren","Hana","Kai","Raiden","Zen","Aki","Suki"],
+funny:["Wkwk","Bocil","Ngakak","Santuy","Mager","Sultan","Kentang","Cilok","Beban","AutoWin","Noob","Receh","Bakso","EsTeh","Gabut","Kocak","MieAyam","Ciee"]};
+const rb={pro:["Pro","OP","GG","X","YT","Rush","Clutch","Prime","Legend","MVP"],dark:["Void","Nox","Shadow","Ghost","Doom","Raven","Dark","Hex","Abyss"],cute:["Luna","Mimi","Kiki","Boba","Mochi","Neko","Pinky","Berry","Momo"],funny:["Bocil","Kentang","Cilok","Wkwk","Beban","Noob","Mager","Bakso"]};
+const rn=["Shadow","Nexus","Kuro","Nova","Raven","Zeno","Luna","Vortex","Akira","Blaze","Ghost","Sora","Nox","Ryu","Hikari"];
+const pick=a=>a[Math.floor(Math.random()*a.length)],num=()=>Math.floor(10+Math.random()*990);
+function clean(s){return s.replace(/[^a-zA-Z0-9]/g,"").slice(0,18)||"Player"}
+function setMode(m,btn){mode=m;document.querySelectorAll(".tab").forEach(x=>x.classList.remove("active"));btn.classList.add("active");usernamePanel.style.display=m==="username"?"block":"none";robloxPanel.style.display=m==="roblox"?"block":"none";bioPanel.style.display=m==="bio"?"block":"none";generate()}
+function generate(){
+ let arr=[];
+ if(mode==="bio"){
+  let n=clean(bioName.value.trim()),s=bioStyle.value;
+  const b={cool:["{n} | chasing dreams ⚡","{n} • stay focused • stay real","Just {n}. No drama."],gaming:["🎮 {n} | Gamer","{n} • Play hard • Have fun 🎮","Level up with {n} 🔥"],aesthetic:["♡ {n} ♡ | good vibes only","{n} ✨ little things, big dreams","☁️ {n} • living my story"],funny:["{n} 😎 profesional rebahan","{n} • online kalau ada WiFi","CEO of mager 😂"]};
+  arr=b[s].map(x=>x.replaceAll("{n}",n));
+  resultTitle.textContent="Bio kamu";
+ }else{
+  let b=clean((mode==="roblox"?robloxWord.value:word.value).trim()),a=mode==="roblox"?rb[robloxStyle.value]:data[style.value],set=new Set(),i=0;
+  while(set.size<20&&i++<500){let s=pick(a),n=num(),x=[b+s,s+b,b+"_"+s,b+n,s+b+n,b+"X"+n,"Its"+b,"The"+b,b+"_"+s+n,b+s+n,"Real"+b,b+"V"+(2+Math.floor(Math.random()*8)),b+"Official",b+"Zone",b+"Prime",b+"Nova",b+"Ultra",b+"Max",b+"Plus",b+s+"X"];set.add(pick(x))}
+  arr=[...set];resultTitle.textContent=mode==="roblox"?"Nama Roblox kamu":"Username kamu";
+ }
+ count.textContent=arr.length+" hasil";
+ results.innerHTML=arr.map(x=>'<div class="item"><span>'+x.replace(/[&<>"]/g,"")+'</span><button class="copy" data-name="'+x.replace(/"/g,"&quot;")+'" onclick="copyText(this)">COPY</button></div>').join("");
+}
+function copyText(b){navigator.clipboard.writeText(b.dataset.name).then(()=>{b.textContent="COPIED!";b.classList.add("done");setTimeout(()=>{b.textContent="COPY";b.classList.remove("done")},1000)})}
+function randomBase(){if(mode==="username")word.value=pick(rn);else if(mode==="roblox")robloxWord.value=pick(rn);else bioName.value=pick(rn);generate()}
+function resetAll(){word.value="";robloxWord.value="";bioName.value="";generate()}
+function shareSite(){if(navigator.share)navigator.share({title:"NamaKeren",text:"Buat nama dan bio gratis di NamaKeren!",url:location.href});else{navigator.clipboard.writeText(location.href);alert("Link disalin.")}}
+generate();
+</script></body></html>
